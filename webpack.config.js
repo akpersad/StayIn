@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Dotenv = require("dotenv-webpack");
 
 const devMode = process.env.NODE_ENV !== "production";
 const SRC_DIR = __dirname + "/src";
@@ -62,7 +63,8 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: devMode ? "[name].css" : "[name].[hash].css",
 			chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
-		})
+		}),
+		new Dotenv()
 	],
 	devServer: {
 		historyApiFallback: true,

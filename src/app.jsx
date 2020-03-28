@@ -2,9 +2,16 @@ import React, { Component } from "react";
 import "./styles/main.scss";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
+import NOW from "./components/test/test";
+
 class App extends Component {
 	render() {
-		return <div>Hello World</div>;
+		return (
+			<div>
+				Hello World
+				<NOW />
+			</div>
+		);
 	}
 }
 
