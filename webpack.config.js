@@ -13,7 +13,6 @@ module.exports = {
 		path: DIST_DIR,
 		filename: "bundle.js",
 		publicPath: "/"
-		// historyApiFallback: true
 	},
 	module: {
 		rules: [
@@ -55,7 +54,6 @@ module.exports = {
 		extensions: ["*", ".js", ".jsx"]
 	},
 	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
 		new HtmlWebpackPlugin({
 			template: SRC_DIR + "/index.html",
 			filename: "./index.html"
@@ -69,7 +67,6 @@ module.exports = {
 	devServer: {
 		historyApiFallback: true,
 		contentBase: DIST_DIR,
-		hot: true,
 		port: 9000
 	}
 };

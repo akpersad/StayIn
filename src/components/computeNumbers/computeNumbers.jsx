@@ -1,45 +1,37 @@
-import React, { Component } from "react";
 import axios from "axios";
 import stateList from "./listOfStates";
 
-class ComputeNumbers extends Component {
-	componentDidMount() {
-		const headers = {
-			"x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
-			"x-rapidapi-key": process.env.RAPID_API
+const computeStateNumbers = data => {
+	const tese = stateList.map(item => {
+		const tempHash = {
+			stateName: item,
+			confirmed: 0,
+			deaths: 0
 		};
 
-		const url = "https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats?country=USA";
-
-		axios.get(url, { headers }).then(response => {
-			this.computeStateNumbers(response.data.data);
-		});
-	}
-
-	computeStateNumbers(data) {
-		const tese = stateList.map(item => {
-			const tempHash = {
-				stateName: item,
-				confirmed: 0,
-				deaths: 0
-			};
-
-			for (let i = 0; i < data.length; i++) {
-				if (data[i].province === item) {
-					tempHash.confirmed += data[i].confirmed;
-					tempHash.deaths += data[i].deaths;
-				}
+		for (let i = 0; i < data.covid19Stats.length; i++) {
+			if (data.covid19Stats[i].province === item) {
+				tempHash.confirmed += data.covid19Stats[i].confirmed;
+				tempHash.deaths += data.covid19Stats[i].deaths;
 			}
-			return tempHash;
-		});
+		}
+		return tempHash;
+	});
 
-		console.log(tese);
-	}
+	console.log(tese);
+};
 
-	render() {
-		const tempVar = "helloWorld";
-		return <div>{tempVar}</div>;
-	}
-}
+const formattedList = () => {
+	const headers = {
+		"x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
+		"x-rapidapi-key": process.env.RAPID_API
+	};
 
-export default ComputeNumbers;
+	const url = "https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats?country=USA";
+
+	axios.get(url, { headers }).then(response => {
+		return computeStateNumbers(response.data.data);
+	});
+};
+
+export default formattedList();
