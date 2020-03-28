@@ -4,7 +4,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 
 class App extends Component {
 	render() {
-		return <div>Hello World</div>;
+		return <div>Hello Wo1rld</div>;
 	}
 }
 

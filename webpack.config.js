@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Dotenv = require("dotenv-webpack");
 
 const devMode = process.env.NODE_ENV !== "production";
 const SRC_DIR = __dirname + "/src";
@@ -12,7 +13,6 @@ module.exports = {
 		path: DIST_DIR,
 		filename: "bundle.js",
 		publicPath: "/"
-		// historyApiFallback: true
 	},
 	module: {
 		rules: [
@@ -46,7 +46,7 @@ module.exports = {
 			},
 			{
 				test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
-				loader: "url-loader"
+				loader: "file-loader"
 			}
 		]
 	},
@@ -54,7 +54,6 @@ module.exports = {
 		extensions: ["*", ".js", ".jsx"]
 	},
 	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
 		new HtmlWebpackPlugin({
 			template: SRC_DIR + "/index.html",
 			filename: "./index.html"
@@ -62,12 +61,12 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: devMode ? "[name].css" : "[name].[hash].css",
 			chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
-		})
+		}),
+		new Dotenv()
 	],
 	devServer: {
 		historyApiFallback: true,
 		contentBase: DIST_DIR,
-		hot: true,
 		port: 9000
 	}
 };
