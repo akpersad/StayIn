@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class Test extends Component {
+class ComputeNumbers extends Component {
 	componentDidMount() {
 		const headers = {
 			"x-rapidapi-host": "covid-19-coronavirus-statistics.p.rapidapi.com",
@@ -25,4 +25,4 @@ class Test extends Component {
 	}
 }
 
-export default Test;
+export default ComputeNumbers;

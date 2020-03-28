@@ -18,6 +18,8 @@
 @import "./partials/accessibility";
 @import "./partials/imported";
 
+@import "../components/computeNumbers/computeNumbers";
+
 #root {
     font-family: $OpenSans;
     position: relative;
