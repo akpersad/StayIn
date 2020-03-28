@@ -1,4 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
+@import "~animate.css/animate.css";
 
 // Globals
 @import "./partials/mixins";
@@ -17,6 +18,8 @@
 @import "./partials/visibility";
 @import "./partials/accessibility";
 @import "./partials/imported";
+
+@import "../components/formContainer/formContainer";
 
 #root {
     font-family: $OpenSans;
