@@ -110,13 +110,13 @@ export const swapClasses = (el, classNameToAdd, classNameToRemove) => {
 };
 
 // Inputs: HTML ELement, String, Boolean
-export const toggleClass = (el, className, bool) => {
+export const toggleClass = (el, className) => {
 	if (el == null || className == null) {
 		console.warn("Make sure el (HTML Element) and className (string) are passed!");
-	} else if (bool) {
-		addClass(el, className);
-	} else {
+	} else if (el.classList.contains(className)) {
 		removeClass(el, className);
+	} else {
+		addClass(el, className);
 	}
 };
 
