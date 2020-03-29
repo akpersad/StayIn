@@ -1,29 +1,25 @@
 import React, { Component } from "react";
 
 import FirstQuestion from "../firstQuestion/firstQuestion";
+import SecondQuestion from "../secondQuestions/secondQuestions";
 import { toggleClass, addClass } from "../../global/_util";
 
 class formContainer extends Component {
-	clickHandler() {
-		addClass(document.querySelector(".test1"), "fadeOutLeftBig");
-		toggleClass(document.querySelector(".test2"), "d-none");
-	}
-
-	handleLanguage(event) {
-		console.log("HELLO ANDREW", event.target.value);
+	handleFirstSelection(event) {
+		if (event.target.value === "yes") {
+			addClass(document.querySelector(".question-one"), "fadeOutLeftBig");
+			toggleClass(document.querySelector(".question-two"), "d-none");
+		}
 	}
 
 	render() {
 		return (
 			<>
-				<button type="button" onClick={this.clickHandler}>
-					Click Me
-				</button>
-				<div className="text-center test1 animated">
-					<FirstQuestion onSelectLanguage={this.handleLanguage} />
+				<div className="text-center question-one animated">
+					<FirstQuestion onChoiceSelection={this.handleFirstSelection} />
 				</div>
-				<div className="animated fadeInRightBig text-center d-none test2">
-					<p>Watch me fade in!</p>
+				<div className="animated fadeInRightBig text-center d-none question-two">
+					<SecondQuestion />
 				</div>
 			</>
 		);

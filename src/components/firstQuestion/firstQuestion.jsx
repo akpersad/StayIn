@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 class FirstQuestion extends Component {
 	handleLangChange(event) {
-		const { onSelectLanguage } = this.props;
-		onSelectLanguage(event);
+		const { onChoiceSelection } = this.props;
+		onChoiceSelection(event);
 	}
 
 	render() {
@@ -15,13 +15,13 @@ class FirstQuestion extends Component {
 					<span>Are you an essential worker?</span>
 				</div>
 				<div className="col-12" onChange={this.handleLangChange.bind(this)}>
-					<label htmlFor="Male" className="radio-btn_group">
-						<input id="Male" type="radio" value="MALE" name="gender" />
-						Male
+					<label htmlFor="yes" className="radio-btn_group">
+						<input id="yes" type="radio" value="yes" name="gender" />
+						Yes
 					</label>
-					<label htmlFor="Female" className="radio-btn_group">
-						<input id="Female" type="radio" value="FEMALE" name="gender" />
-						Female
+					<label htmlFor="no" className="radio-btn_group">
+						<input id="no" type="radio" value="no" name="gender" />
+						No
 					</label>
 				</div>
 			</div>
@@ -30,7 +30,7 @@ class FirstQuestion extends Component {
 }
 
 FirstQuestion.propTypes = {
-	onSelectLanguage: PropTypes.func.isRequired
+	onChoiceSelection: PropTypes.func.isRequired
 };
 
 export default FirstQuestion;
