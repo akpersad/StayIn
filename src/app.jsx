@@ -8,7 +8,6 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				Hello Wo1rld
 				<FormContainer />
 			</div>
 		);
