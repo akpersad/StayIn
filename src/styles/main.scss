@@ -1,6 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~animate.css/animate.css";
 
+@import "./mixins.scss";
+
 @import "../components/formContainer/formContainer";
 @import "../components/firstQuestion/firstQuestion";
 @import "../components/secondQuestions/secondQuestions";
@@ -10,4 +12,9 @@ $OpenSans: "Open Sans", sans-serif;
 #root {
     font-family: $OpenSans;
     position: relative;
+}
+
+.delay-half {
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
 }

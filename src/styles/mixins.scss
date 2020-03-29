@@ -1,0 +1,29 @@
+@mixin input-style {
+    display: block;
+    input {
+        display: none;
+        & + span {
+            border: 1px solid darkorange;
+            background-color: white;
+            color: darkorange;
+            display: block;
+            width: 50%;
+            margin: auto;
+            margin-top: 25px;
+            cursor: pointer;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 5px;
+            &:hover {
+                background-color: darkorange;
+                border-color: white;
+                color: white;
+            }
+        }
+        &:checked + span {
+            background-color: darkorange;
+            border-color: white;
+            color: white;
+        }
+    }
+}

@@ -10,18 +10,18 @@ class FirstQuestion extends Component {
 	render() {
 		// const { onClick } = this.props;
 		return (
-			<div className="row margin-top_push">
+			<div className="row">
 				<div className="col-12">
 					<span>Are you an essential worker?</span>
 				</div>
 				<div className="col-12" onChange={this.handleLangChange.bind(this)}>
 					<label htmlFor="yes" className="radio-btn_group">
 						<input id="yes" type="radio" value="yes" name="gender" />
-						Yes
+						<span>Yes</span>
 					</label>
 					<label htmlFor="no" className="radio-btn_group">
 						<input id="no" type="radio" value="no" name="gender" />
-						No
+						<span>No</span>
 					</label>
 				</div>
 			</div>
