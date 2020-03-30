@@ -1,28 +1,52 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import { questions } from "../computeNumbers/_listOfQuestions";
+
 class FirstQuestion extends Component {
+	constructor() {
+		super();
+		this.state = {
+			question: "",
+			answers: []
+		};
+	}
+
+	componentDidMount() {
+		this.renderQuestions();
+	}
+
 	handleButtonChange(event) {
 		const { onChoiceSelection } = this.props;
 		onChoiceSelection(event);
 	}
 
+	renderQuestions() {
+		const {
+			sectionOne: { question, answers }
+		} = questions;
+		const renderArr = answers.map(item => {
+			const key = Object.keys(item)[0];
+			const value = item[key];
+			return (
+				<label htmlFor={key} key={key} className="radio-btn_group">
+					<input id={key} type="radio" value={key} name="sectionOne" />
+					<span>{value}</span>
+				</label>
+			);
+		});
+		return this.setState({ question, answers: renderArr });
+	}
+
 	render() {
-		// const { onClick } = this.props;
+		const { question, answers } = this.state;
 		return (
 			<div className="row">
 				<div className="col-12">
-					<span>Are you an essential worker?</span>
+					<span>{question}</span>
 				</div>
 				<div className="col-12" onChange={this.handleButtonChange.bind(this)}>
-					<label htmlFor="yes" className="radio-btn_group">
-						<input id="yes" type="radio" value="yes" name="gender" />
-						<span>Yes</span>
-					</label>
-					<label htmlFor="no" className="radio-btn_group">
-						<input id="no" type="radio" value="no" name="gender" />
-						<span>No</span>
-					</label>
+					{answers}
 				</div>
 			</div>
 		);
