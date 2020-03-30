@@ -31,5 +31,12 @@
             border-color: white;
             color: white;
         }
+        &:disabled + span {
+            border-color: gray;
+            background-color: lightgray;
+            color: gray;
+            cursor: not-allowed;
+            outline: none !important;
+        }
     }
 }
