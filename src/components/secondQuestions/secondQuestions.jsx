@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import PropTypes from "prop-types";
+
 class SecondQuestions extends Component {
 	constructor() {
 		super();
@@ -8,6 +10,7 @@ class SecondQuestions extends Component {
 		};
 
 		this.handleCheckboxClick = this.handleCheckboxClick.bind(this);
+		this.handleButtonClick = this.handleButtonClick.bind(this);
 	}
 
 	handleCheckboxClick(event) {
@@ -39,6 +42,12 @@ class SecondQuestions extends Component {
 				document.querySelector(`#${ids[i]}`).disabled = "disabled";
 			}
 		}
+	}
+
+	handleButtonClick() {
+		const { onCheckboxSelection } = this.props;
+		const { selections } = this.state;
+		onCheckboxSelection(selections);
 	}
 
 	render() {
@@ -115,11 +124,17 @@ class SecondQuestions extends Component {
 				</div>
 				<div className="submit-button_group">
 					<button type="button">Go Back</button>
-					<button type="button">Next</button>
+					<button onClick={this.handleButtonClick} type="button">
+						Next
+					</button>
 				</div>
 			</>
 		);
 	}
 }
+
+SecondQuestions.propTypes = {
+	onCheckboxSelection: PropTypes.func.isRequired
+};
 
 export default SecondQuestions;

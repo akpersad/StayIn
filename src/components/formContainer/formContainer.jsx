@@ -28,6 +28,10 @@ class formContainer extends Component {
 		}
 	}
 
+	handleSecondSelection(selection) {
+		console.log(selection);
+	}
+
 	render() {
 		return (
 			<div className="center-page">
@@ -35,7 +39,7 @@ class formContainer extends Component {
 					<FirstQuestion onChoiceSelection={this.handleFirstSelection} />
 				</div>
 				<div className="animated fadeInRightBig text-center w-100 d-none question-two">
-					<SecondQuestion />
+					<SecondQuestion onCheckboxSelection={this.handleSecondSelection} />
 				</div>
 			</div>
 		);
