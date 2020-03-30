@@ -17,9 +17,9 @@ export const questions = {
 		question: "Any of the following?",
 		answers: [
 			{ friends: "Want to go out and see friends" },
-			{ test: "Test4" },
-			{ test2: "Test5" },
-			{ test3: "Test6" },
+			{ test4: "Test4" },
+			{ test5: "Test5" },
+			{ test6: "Test6" },
 			{ none: "None of the Above" }
 		]
 	}

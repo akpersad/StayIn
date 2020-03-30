@@ -25,7 +25,7 @@ class ThirdQuestions extends Component {
 			const key = Object.keys(item)[0];
 			const value = item[key];
 			return (
-				<label htmlFor={key} className="checkbox-inputs">
+				<label key={key} htmlFor={key} className="checkbox-inputs">
 					<input type="checkbox" id={key} name={key} value={key} />
 					<span>{value}</span>
 				</label>
@@ -43,7 +43,6 @@ class ThirdQuestions extends Component {
 				</div>
 				<div>{answers}</div>
 				<div className="submit-button_group">
-					<button type="button">Go Back</button>
 					<button onClick={this.handleButtonClick} type="button">
 						Next
 					</button>

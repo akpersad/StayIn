@@ -92,7 +92,6 @@ class SecondQuestions extends Component {
 				</div>
 				<div>{answers}</div>
 				<div className="submit-button_group">
-					<button type="button">Go Back</button>
 					<button onClick={this.handleButtonClick} type="button">
 						Next
 					</button>
