@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { questions } from "../computeNumbers/_listOfQuestions";
 
-class FirstQuestion extends Component {
+class ThirdQuestions extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -13,24 +13,20 @@ class FirstQuestion extends Component {
 	}
 
 	componentDidMount() {
+		const { onCheckboxSelection2 } = this.props;
 		this.renderQuestions();
-	}
-
-	handleButtonChange(event) {
-		const { onChoiceSelection } = this.props;
-		onChoiceSelection(event);
 	}
 
 	renderQuestions() {
 		const {
-			sectionOne: { question, answers }
+			sectionThree: { question, answers }
 		} = questions;
 		const renderArr = answers.map(item => {
 			const key = Object.keys(item)[0];
 			const value = item[key];
 			return (
-				<label htmlFor={key} key={key} className="radio-btn_group">
-					<input id={key} type="radio" value={key} name="sectionOne" />
+				<label key={key} htmlFor={key} className="checkbox-inputs">
+					<input type="checkbox" id={key} name={key} value={key} />
 					<span>{value}</span>
 				</label>
 			);
@@ -41,20 +37,23 @@ class FirstQuestion extends Component {
 	render() {
 		const { question, answers } = this.state;
 		return (
-			<div className="row">
-				<div className="col-12">
+			<>
+				<div>
 					<span>{question}</span>
 				</div>
-				<div className="col-12" onChange={this.handleButtonChange.bind(this)}>
-					{answers}
+				<div>{answers}</div>
+				<div className="submit-button_group">
+					<button onClick={this.handleButtonClick} type="button">
+						Next
+					</button>
 				</div>
-			</div>
+			</>
 		);
 	}
 }
 
-FirstQuestion.propTypes = {
-	onChoiceSelection: PropTypes.func.isRequired
+ThirdQuestions.propTypes = {
+	onCheckboxSelection2: PropTypes.func.isRequired
 };
 
-export default FirstQuestion;
+export default ThirdQuestions;

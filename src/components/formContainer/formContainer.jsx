@@ -2,19 +2,24 @@ import React, { Component } from "react";
 
 import FirstQuestion from "../firstQuestion/firstQuestion";
 import SecondQuestion from "../secondQuestions/secondQuestions";
-import { toggleClass, addClass } from "../../global/_util";
+import ThirdQuestion from "../thirdQuestions/thirdQuestions";
+import { toggleClass, addClass, removeClass } from "../../global/_util";
 
 class formContainer extends Component {
 	constructor() {
 		super();
 		this.handleFirstSelection = this.handleFirstSelection.bind(this);
+		this.handleSecondSelection = this.handleSecondSelection.bind(this);
+		this.handleThirdSelection = this.handleThirdSelection.bind(this);
 	}
 
 	componentDidMount() {
 		const questionOne = document.querySelector(".question-one");
 		const questionTwo = document.querySelector(".question-two");
+		const questionThree = document.querySelector(".question-three");
 		this.questionOne = questionOne;
 		this.questionTwo = questionTwo;
+		this.questionThree = questionThree;
 
 		questionOne.addEventListener("animationend", function() {
 			toggleClass(questionOne, "d-none");
@@ -29,7 +34,23 @@ class formContainer extends Component {
 	}
 
 	handleSecondSelection(selection) {
-		console.log(selection);
+		this.questionTwo.addEventListener(
+			"animationend",
+			function() {
+				toggleClass(this.questionTwo, "d-none");
+			}.bind(this)
+		);
+
+		if (selection.includes("none")) {
+			removeClass(this.questionTwo, "fadeInRightBig");
+			addClass(this.questionTwo, "faster");
+			addClass(this.questionTwo, "fadeOutLeftBig");
+			toggleClass(this.questionThree, "d-none");
+		}
+	}
+
+	handleThirdSelection() {
+		console.log("Hello");
 	}
 
 	render() {
@@ -40,6 +61,9 @@ class formContainer extends Component {
 				</div>
 				<div className="animated fadeInRightBig text-center w-100 d-none question-two">
 					<SecondQuestion onCheckboxSelection={this.handleSecondSelection} />
+				</div>
+				<div className="animated fadeInRightBig text-center w-100 d-none question-three">
+					<ThirdQuestion onCheckboxSelection2={this.handleThirdSelection} />
 				</div>
 			</div>
 		);
