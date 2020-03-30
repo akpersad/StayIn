@@ -1,31 +1,47 @@
 import React, { Component } from "react";
 
 import FirstQuestion from "../firstQuestion/firstQuestion";
+import SecondQuestion from "../secondQuestions/secondQuestions";
 import { toggleClass, addClass } from "../../global/_util";
 
 class formContainer extends Component {
-	clickHandler() {
-		addClass(document.querySelector(".test1"), "fadeOutLeftBig");
-		toggleClass(document.querySelector(".test2"), "d-none");
+	constructor() {
+		super();
+		this.handleFirstSelection = this.handleFirstSelection.bind(this);
 	}
 
-	handleLanguage(event) {
-		console.log("HELLO ANDREW", event.target.value);
+	componentDidMount() {
+		const questionOne = document.querySelector(".question-one");
+		const questionTwo = document.querySelector(".question-two");
+		this.questionOne = questionOne;
+		this.questionTwo = questionTwo;
+
+		questionOne.addEventListener("animationend", function() {
+			toggleClass(questionOne, "d-none");
+		});
+	}
+
+	handleFirstSelection(event) {
+		if (event.target.value === "no") {
+			addClass(this.questionOne, "fadeOutLeftBig");
+			toggleClass(this.questionTwo, "d-none");
+		}
+	}
+
+	handleSecondSelection(selection) {
+		console.log(selection);
 	}
 
 	render() {
 		return (
-			<>
-				<button type="button" onClick={this.clickHandler}>
-					Click Me
-				</button>
-				<div className="text-center test1 animated">
-					<FirstQuestion onSelectLanguage={this.handleLanguage} />
+			<div className="center-page">
+				<div className="text-center w-100 question-one animated faster">
+					<FirstQuestion onChoiceSelection={this.handleFirstSelection} />
 				</div>
-				<div className="animated fadeInRightBig text-center d-none test2">
-					<p>Watch me fade in!</p>
+				<div className="animated fadeInRightBig text-center w-100 d-none question-two">
+					<SecondQuestion onCheckboxSelection={this.handleSecondSelection} />
 				</div>
-			</>
+			</div>
 		);
 	}
 }
