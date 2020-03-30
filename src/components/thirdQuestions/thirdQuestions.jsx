@@ -1,47 +1,47 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import { questions } from "../computeNumbers/_listOfQuestions";
+
 class ThirdQuestions extends Component {
+	constructor() {
+		super();
+		this.state = {
+			question: "",
+			answers: []
+		};
+	}
+
 	componentDidMount() {
 		const { onCheckboxSelection2 } = this.props;
+		this.renderQuestions();
+	}
+
+	renderQuestions() {
+		const {
+			sectionThree: { question, answers }
+		} = questions;
+		const renderArr = answers.map(item => {
+			const key = Object.keys(item)[0];
+			const value = item[key];
+			return (
+				<label htmlFor={key} className="checkbox-inputs">
+					<input type="checkbox" id={key} name={key} value={key} />
+					<span>{value}</span>
+				</label>
+			);
+		});
+		return this.setState({ question, answers: renderArr });
 	}
 
 	render() {
+		const { question, answers } = this.state;
 		return (
 			<>
 				<div>
-					<span>Please select all that apply</span>
+					<span>{question}</span>
 				</div>
-				<div>
-					<label htmlFor="vehicle1" className="checkbox-inputs">
-						<input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-						<span>Bike</span>
-					</label>
-
-					<label htmlFor="vehicle2" className="checkbox-inputs">
-						<input type="checkbox" id="vehicle2" name="vehicle2" value="Car" />
-						<span>Car</span>
-					</label>
-
-					<label htmlFor="vehicle3" className="checkbox-inputs">
-						<input type="checkbox" id="vehicle3" name="vehicle3" value="Bus" />
-						<span>Bus</span>
-					</label>
-
-					<label htmlFor="vehicle4" className="checkbox-inputs">
-						<input type="checkbox" id="vehicle4" name="vehicle4" value="Plane" />
-						<span>Plane</span>
-					</label>
-
-					<label htmlFor="vehicle5" className="checkbox-inputs">
-						<input type="checkbox" id="vehicle5" name="vehicle5" value="Train" />
-						<span>Train</span>
-					</label>
-					<label htmlFor="vehicle6" className="checkbox-inputs">
-						<input type="checkbox" id="vehicle6" name="vehicle6" value="None" />
-						<span>None of these apply</span>
-					</label>
-				</div>
+				<div>{answers}</div>
 				<div className="submit-button_group">
 					<button type="button">Go Back</button>
 					<button onClick={this.handleButtonClick} type="button">
