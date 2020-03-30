@@ -30,11 +30,11 @@ class formContainer extends Component {
 
 	render() {
 		return (
-			<div className="margin-top_push">
-				<div className="text-center question-one animated faster">
+			<div className="center-page">
+				<div className="text-center w-100 question-one animated faster">
 					<FirstQuestion onChoiceSelection={this.handleFirstSelection} />
 				</div>
-				<div className="animated fadeInRightBig text-center d-none question-two">
+				<div className="animated fadeInRightBig text-center w-100 d-none question-two">
 					<SecondQuestion />
 				</div>
 			</div>

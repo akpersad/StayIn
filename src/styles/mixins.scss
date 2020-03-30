@@ -8,6 +8,7 @@
             color: darkorange;
             display: block;
             width: 50%;
+            max-width: 500px;
             margin: auto;
             margin-top: 25px;
             cursor: pointer;
@@ -18,6 +19,11 @@
                 background-color: darkorange;
                 border-color: white;
                 color: white;
+            }
+            &:focus,
+            &:active {
+                outline-style: solid;
+                outline-color: lightgray;
             }
         }
         &:checked + span {
