@@ -1,0 +1,20 @@
+.checkbox-inputs {
+    @include input-style;
+}
+
+.submit-button_group {
+    display: flex;
+    width: 50%;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 20px;
+    justify-content: center;
+    button {
+        border: 1px solid darkorange;
+        background-color: white;
+        color: darkorange;
+        height: 50px;
+        border-radius: 5px;
+        width: 30%;
+    }
+}

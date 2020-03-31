@@ -1,5 +1,5 @@
 import axios from "axios";
-import stateList from "./listOfStates";
+import { stateList } from "./listOfStates";
 
 const computeStateNumbers = data => {
 	const tese = stateList.map(item => {

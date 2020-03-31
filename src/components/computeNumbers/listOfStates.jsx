@@ -1,4 +1,4 @@
-const stateList = [
+export const stateList = [
 	"Alabama",
 	"Alaska",
 	"Arizona",
@@ -50,5 +50,3 @@ const stateList = [
 	"Wisconsin",
 	"Wyoming"
 ];
-
-export default stateList;
