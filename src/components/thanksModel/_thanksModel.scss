@@ -1,0 +1,59 @@
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.85);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100000000;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    .react-modal {
+        position: relative;
+        &:focus {
+            outline: none;
+        }
+        .modal-dialog {
+            max-width: 95%;
+            .modal-content {
+                max-height: 90vh;
+                overflow: scroll;
+                background-color: white;
+                .modal-header {
+                    .close-btn {
+                        color: black;
+                    }
+                }
+                .modal-body {
+                    text-align: center;
+                    .modal-image {
+                        max-width: 85vw;
+                        max-height: 45vh;
+                        border: 1px solid lightgray;
+                    }
+                    .column-row-set {
+                        flex-direction: row;
+                    }
+                    .modal-body_text {
+                        width: 75%;
+                        margin-left: auto;
+                        margin-right: auto;
+                        font-size: 0.8em;
+                        .white-space-pre {
+                            white-space: pre-line;
+                        }
+                    }
+                    .project-social_links {
+                        font-size: 23px;
+                        &-github {
+                            padding-right: 20px;
+                        }
+                        &-web {
+                            padding-right: 50px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

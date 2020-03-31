@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import FirstQuestion from "../firstQuestion/firstQuestion";
 import SecondQuestion from "../secondQuestions/secondQuestions";
 import ThirdQuestion from "../thirdQuestions/thirdQuestions";
+import ThanksModal from "../thanksModel/thanksModel";
 import { toggleClass, addClass, removeClass } from "../../global/_util";
 
 class formContainer extends Component {
@@ -11,6 +12,10 @@ class formContainer extends Component {
 		this.handleFirstSelection = this.handleFirstSelection.bind(this);
 		this.handleSecondSelection = this.handleSecondSelection.bind(this);
 		this.handleThirdSelection = this.handleThirdSelection.bind(this);
+
+		this.state = {
+			showThanksModal: false
+		};
 	}
 
 	componentDidMount() {
@@ -30,6 +35,9 @@ class formContainer extends Component {
 		if (event.target.value === "no") {
 			addClass(this.questionOne, "fadeOutLeftBig");
 			toggleClass(this.questionTwo, "d-none");
+		} else {
+			addClass(this.questionOne, "fadeOutLeftBig");
+			this.setState({ showThanksModal: true });
 		}
 	}
 
@@ -54,6 +62,7 @@ class formContainer extends Component {
 	}
 
 	render() {
+		const { showThanksModal } = this.state;
 		return (
 			<div className="center-page">
 				<div className="text-center w-100 question-one animated faster">
@@ -64,6 +73,10 @@ class formContainer extends Component {
 				</div>
 				<div className="animated fadeInRightBig text-center w-100 d-none question-three">
 					<ThirdQuestion onCheckboxSelection2={this.handleThirdSelection} />
+				</div>
+
+				<div className="animiated fadeInUpBig">
+					<ThanksModal showModal={showThanksModal} />
 				</div>
 			</div>
 		);
